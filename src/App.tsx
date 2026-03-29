@@ -1,8 +1,20 @@
+import { useEffect, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import Scene from './3D/Scene';
 import { CameraControls } from '@react-three/drei';
+import { LoadingScreen } from './LoadingScreen';
+import { useAppStore } from './store';
 
 function App() {
+	const controlsRef = useRef<CameraControls>(null);
+	const sceneVisible = useAppStore((s) => s.sceneVisible);
+
+	// HACK: Bc after .glb animated, object shift away from 0,0,0. So shift target to orbit obj
+	useEffect(() => {
+		if (!sceneVisible) return;
+		controlsRef.current?.setTarget(0, 0, 0.75, true);
+	}, [sceneVisible]);
+
 	return (
 		<div className='background-canvas'>
 			<Canvas
@@ -10,13 +22,14 @@ function App() {
 					fov: 25,
 					near: 0.1,
 					far: 100,
-					position: [0, 0, 18],
+					position: [0, 0, 3],
 				}}
 				shadows>
 				<Scene />
 
-				<CameraControls />
+				<CameraControls ref={controlsRef} />
 			</Canvas>
+			<LoadingScreen />
 		</div>
 	);
 }
