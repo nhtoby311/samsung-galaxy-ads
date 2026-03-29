@@ -17,15 +17,15 @@ export default function Scene() {
 			<Background />
 			<Environment
 				frames={Infinity}
-				preset='studio'
+				preset='warehouse'
 				//background
-				environmentIntensity={0.23}>
+				environmentIntensity={0.43}>
 				{/* <Lightformers /> */}
 			</Environment>
 			<Samsung
 				renderOrder={10}
 				ref={phoneRef}
-				scale={5}
+				scale={4}
 				rotation={[0, Math.PI, 0]}
 			/>
 			<PhoneBoundsTracker groupRef={phoneRef} />
