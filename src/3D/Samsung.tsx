@@ -10,30 +10,29 @@ type GLTFResult = GLTF & {
 		BackPanel: THREE.Mesh;
 		DisplayScreen: THREE.Mesh;
 		GlassBackPanel: THREE.Mesh;
-		Mesh061: THREE.Mesh;
-		Mesh061_1: THREE.Mesh;
-		Mesh061_2: THREE.Mesh;
-		Mesh061_3: THREE.Mesh;
-		Mesh061_4: THREE.Mesh;
-		Mesh061_5: THREE.Mesh;
-		Mesh061_6: THREE.Mesh;
-		Mesh061_7: THREE.Mesh;
-		Mesh061_8: THREE.Mesh;
-		Mesh061_9: THREE.Mesh;
-		Mesh061_10: THREE.Mesh;
-		Mesh061_11: THREE.Mesh;
-		Mesh061_12: THREE.Mesh;
-		Mesh061_13: THREE.Mesh;
-		Mesh061_14: THREE.Mesh;
-		Mesh061_15: THREE.Mesh;
-		Mesh061_16: THREE.Mesh;
-		Mesh061_17: THREE.Mesh;
-		Mesh061_18: THREE.Mesh;
-		Mesh061_19: THREE.Mesh;
-		Mesh061_20: THREE.Mesh;
-		Mesh061_21: THREE.Mesh;
-		Mesh061_22: THREE.Mesh;
-		Mesh061_23: THREE.Mesh;
+		Mesh088: THREE.Mesh;
+		Mesh088_1: THREE.Mesh;
+		Mesh088_2: THREE.Mesh;
+		Mesh088_3: THREE.Mesh;
+		Mesh088_4: THREE.Mesh;
+		Mesh088_5: THREE.Mesh;
+		Mesh088_6: THREE.Mesh;
+		Mesh088_7: THREE.Mesh;
+		Mesh088_8: THREE.Mesh;
+		Mesh088_9: THREE.Mesh;
+		Mesh088_10: THREE.Mesh;
+		Mesh088_11: THREE.Mesh;
+		Mesh088_12: THREE.Mesh;
+		Mesh088_13: THREE.Mesh;
+		Mesh088_14: THREE.Mesh;
+		Mesh088_15: THREE.Mesh;
+		Mesh088_16: THREE.Mesh;
+		Mesh088_17: THREE.Mesh;
+		Mesh088_18: THREE.Mesh;
+		Mesh088_19: THREE.Mesh;
+		Mesh088_20: THREE.Mesh;
+		Mesh088_21: THREE.Mesh;
+		Mesh088_22: THREE.Mesh;
 		MetalFrame: THREE.Mesh;
 	};
 	materials: {
@@ -41,6 +40,7 @@ type GLTFResult = GLTF & {
 		['Display_Activearea.001']: THREE.MeshStandardMaterial;
 		['Backcover_Glass.001']: THREE.MeshStandardMaterial;
 		['Flash.001']: THREE.MeshStandardMaterial;
+		['BackCam_Case_3.001']: THREE.MeshStandardMaterial;
 		['BackCam_Body.001']: THREE.MeshStandardMaterial;
 		['BackCam_Glass.001']: THREE.MeshStandardMaterial;
 		['BackCam_Glass_AO.001']: THREE.MeshStandardMaterial;
@@ -62,8 +62,6 @@ type GLTFResult = GLTF & {
 		['Antenna_Plastic.001']: THREE.MeshStandardMaterial;
 		['Antenna_Plastic_light.001']: THREE.MeshStandardMaterial;
 		['Rearcase_hole.001']: THREE.MeshStandardMaterial;
-		['Rearcase_light.001']: THREE.MeshStandardMaterial;
-		['BackCam_Case_3.001']: THREE.MeshStandardMaterial;
 		['Rearcase.001']: THREE.MeshStandardMaterial;
 	};
 };
@@ -105,7 +103,7 @@ export function Samsung({
 	const { backcoverColor } = useControls('Phone', {
 		backcoverColor: '#8977c1',
 		metalFrameColor: {
-			value: '#' + materials['Rearcase.001'].color.getHexString(),
+			value: '#867ca3',
 			onChange: (v: string) => materials['Rearcase.001'].color.set(v),
 		},
 	});
@@ -140,174 +138,167 @@ export function Samsung({
 						geometry={nodes.MetalFrame.geometry}
 						material={materials['Rearcase.001']}
 					/>
-					<group name='M1_BackCam_Glass_AO028'>
+					<group name='M1_BackCam_Glass_AO001'>
 						<mesh
-							name='Mesh061'
+							name='Mesh088'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061.geometry}
+							geometry={nodes.Mesh088.geometry}
 							material={materials['Flash.001']}
 						/>
 						<mesh
-							name='Mesh061_1'
+							name='Mesh088_1'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_1.geometry}
+							geometry={nodes.Mesh088_1.geometry}
+							material={materials['BackCam_Case_3.001']}
+						/>
+						<mesh
+							name='Mesh088_2'
+							castShadow
+							receiveShadow
+							geometry={nodes.Mesh088_2.geometry}
 							material={materials['BackCam_Body.001']}
 						/>
 						<mesh
-							name='Mesh061_2'
+							name='Mesh088_3'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_2.geometry}
+							geometry={nodes.Mesh088_3.geometry}
 							material={materials['BackCam_Glass.001']}
 						/>
 						<mesh
-							name='Mesh061_3'
+							name='Mesh088_4'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_3.geometry}
+							geometry={nodes.Mesh088_4.geometry}
 							material={materials['BackCam_Glass_AO.001']}
 						/>
 						<mesh
-							name='Mesh061_4'
+							name='Mesh088_5'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_4.geometry}
+							geometry={nodes.Mesh088_5.geometry}
 							material={materials['USB_1.001']}
 						/>
 						<mesh
-							name='Mesh061_5'
+							name='Mesh088_6'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_5.geometry}
+							geometry={nodes.Mesh088_6.geometry}
 							material={materials['BackCam_Ring.001']}
 						/>
 						<mesh
-							name='Mesh061_6'
+							name='Mesh088_7'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_6.geometry}
+							geometry={nodes.Mesh088_7.geometry}
 							material={materials['Samsung_Logo.001']}
 						/>
 						<mesh
-							name='Mesh061_7'
+							name='Mesh088_8'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_7.geometry}
+							geometry={nodes.Mesh088_8.geometry}
 							material={materials['Front_Bezel.001']}
 						/>
 						<mesh
-							name='Mesh061_8'
+							name='Mesh088_9'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_8.geometry}
+							geometry={nodes.Mesh088_9.geometry}
 							material={materials['Flash_Glass.001']}
 						/>
 						<mesh
-							name='Mesh061_9'
+							name='Mesh088_10'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_9.geometry}
+							geometry={nodes.Mesh088_10.geometry}
 							material={materials['BackCam_Case.001']}
 						/>
 						<mesh
-							name='Mesh061_10'
+							name='Mesh088_11'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_10.geometry}
+							geometry={nodes.Mesh088_11.geometry}
 							material={materials['USB_2.001']}
 						/>
 						<mesh
-							name='Mesh061_11'
+							name='Mesh088_12'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_11.geometry}
+							geometry={nodes.Mesh088_12.geometry}
 							material={materials['BackCam_Frame_2.001']}
 						/>
 						<mesh
-							name='Mesh061_12'
+							name='Mesh088_13'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_12.geometry}
+							geometry={nodes.Mesh088_13.geometry}
 							material={materials['BackCam_Frame_Edge.001']}
 						/>
 						<mesh
-							name='Mesh061_13'
+							name='Mesh088_14'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_13.geometry}
+							geometry={nodes.Mesh088_14.geometry}
 							material={materials['FrontCam_Glass.001']}
 						/>
 						<mesh
-							name='Mesh061_14'
+							name='Mesh088_15'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_14.geometry}
+							geometry={nodes.Mesh088_15.geometry}
 							material={materials['BackCam_Frame.001']}
 						/>
 						<mesh
-							name='Mesh061_15'
+							name='Mesh088_16'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_15.geometry}
+							geometry={nodes.Mesh088_16.geometry}
 							material={materials['BackCam_Frame_Inside.001']}
 						/>
 						<mesh
-							name='Mesh061_16'
+							name='Mesh088_17'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_16.geometry}
+							geometry={nodes.Mesh088_17.geometry}
 							material={materials['BackCam_Case_Side_2.001']}
 						/>
 						<mesh
-							name='Mesh061_17'
+							name='Mesh088_18'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_17.geometry}
+							geometry={nodes.Mesh088_18.geometry}
 							material={materials['BackCam_Case_Side_3.001']}
 						/>
 						<mesh
-							name='Mesh061_18'
+							name='Mesh088_19'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_18.geometry}
+							geometry={nodes.Mesh088_19.geometry}
 							material={materials['Blackhole.001']}
 						/>
 						<mesh
-							name='Mesh061_19'
+							name='Mesh088_20'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_19.geometry}
+							geometry={nodes.Mesh088_20.geometry}
 							material={materials['Antenna_Plastic.001']}
 						/>
 						<mesh
-							name='Mesh061_20'
+							name='Mesh088_21'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_20.geometry}
+							geometry={nodes.Mesh088_21.geometry}
 							material={materials['Antenna_Plastic_light.001']}
 						/>
 						<mesh
-							name='Mesh061_21'
+							name='Mesh088_22'
 							castShadow
 							receiveShadow
-							geometry={nodes.Mesh061_21.geometry}
+							geometry={nodes.Mesh088_22.geometry}
 							material={materials['Rearcase_hole.001']}
-						/>
-						<mesh
-							name='Mesh061_22'
-							castShadow
-							receiveShadow
-							geometry={nodes.Mesh061_22.geometry}
-							material={materials['Rearcase_light.001']}
-						/>
-						<mesh
-							name='Mesh061_23'
-							castShadow
-							receiveShadow
-							geometry={nodes.Mesh061_23.geometry}
-							material={materials['BackCam_Case_3.001']}
 						/>
 					</group>
 
