@@ -15,8 +15,8 @@ export default function Scene() {
 			<Environment
 				frames={Infinity}
 				preset='studio'
-				// background
-				environmentIntensity={0.53}>
+				//background
+				environmentIntensity={0.23}>
 				<Lightformers />
 			</Environment>
 			<Samsung ref={phoneRef} scale={5} rotation={[0, Math.PI, 0]} />

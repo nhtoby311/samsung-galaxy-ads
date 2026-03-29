@@ -43,6 +43,31 @@ export function Samsung({
 		}
 	}, [sceneVisible, actions]);
 
+	// Swap all MeshPhysicalMaterial instances to MeshStandardMaterial
+	useEffect(() => {
+		scene.traverse((obj) => {
+			const mesh = obj as THREE.Mesh;
+			if (mesh.isMesh && (mesh.material as any).isMeshPhysicalMaterial) {
+				const oldMat = mesh.material as THREE.MeshPhysicalMaterial;
+				const newMat = new THREE.MeshStandardMaterial();
+				THREE.MeshStandardMaterial.prototype.copy.call(newMat, oldMat);
+				oldMat.dispose();
+				mesh.material = newMat;
+			}
+		});
+
+		// Audit: log every mesh material type after the swap
+		scene.traverse((obj) => {
+			const mesh = obj as THREE.Mesh;
+			if (mesh.isMesh) {
+				const mat = mesh.material as any;
+				console.log(
+					`[material audit] ${mesh.name}: ${mat.type} | isPhysical=${mat.isMeshPhysicalMaterial} | isStandard=${mat.isMeshStandardMaterial}`,
+				);
+			}
+		});
+	}, [scene]);
+
 	return (
 		<group ref={mergedRef} {...props} dispose={null}>
 			{/* primitive preserves the full named GLB hierarchy so the
