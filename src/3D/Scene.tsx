@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import * as THREE from 'three';
 import { Environment } from '@react-three/drei';
 import { Samsung } from './Samsung';

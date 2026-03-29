@@ -5,7 +5,7 @@ import { animate } from 'motion';
 
 export default function Lightformers() {
 	const group = useRef<any>(null);
-	useFrame((state, delta) => {
+	useFrame((state) => {
 		group.current.position.x = Math.sin(state.clock.elapsedTime / 2) * 8;
 		group.current.position.z = Math.cos(state.clock.elapsedTime / 2) * 8;
 	});
