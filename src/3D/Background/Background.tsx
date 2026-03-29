@@ -93,7 +93,7 @@ export default function Background() {
 	});
 
 	return (
-		<mesh frustumCulled={false} renderOrder={0}>
+		<mesh frustumCulled={false} renderOrder={-1}>
 			<planeGeometry args={[2, 2]} />
 			<shaderMaterial
 				ref={matRef}
