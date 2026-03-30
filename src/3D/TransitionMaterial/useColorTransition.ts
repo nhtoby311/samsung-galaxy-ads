@@ -13,7 +13,7 @@ type TransitionMaterialRef = {
   uniforms: TransitionUniforms;
 };
 
-const uProgressRange = { start: 0.2, end: 0.8 }; // Only animate between these progress values to allow seamless looping
+const uProgressRange = { start: 0.4, end: 0.6 }; // Only animate between these progress values to allow seamless looping
 
 export function useColorTransition() {
   const materialRefStore = useAppStore((s) => s.materialRef);

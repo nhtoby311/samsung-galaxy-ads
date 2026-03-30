@@ -120,7 +120,7 @@ export function Samsung({
     dotDensity: {
       value: 260,
       min: 1,
-      max: 400,
+      max: 800,
     },
     noiseScale: {
       value: 1.13,
