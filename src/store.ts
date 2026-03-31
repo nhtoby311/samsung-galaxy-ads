@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import * as THREE from "three";
 
 type PhoneSize = { width: number; height: number };
 
@@ -10,7 +11,11 @@ interface AppStore {
   currentPhoneColor: string;
   nextPhoneColor: string;
   isTransitioning: boolean;
-  materialRef: any;
+  materialTransitionRef: any;
+  /** The live THREE.Color on Samsung's MetalFrame material, registered on mount. */
+  frameColorObject: THREE.Color | null;
+  /** Stable THREE.Color objects for background — mutated in-place by the transition hook. */
+  bgColorObjects: THREE.Color[];
   setPhoneSize: (size: PhoneSize) => void;
   setLoadingProgress: (progress: number) => void;
   setLoaded: (loaded: boolean) => void;
@@ -18,7 +23,8 @@ interface AppStore {
   setCurrentPhoneColor: (color: string) => void;
   setNextPhoneColor: (color: string) => void;
   setIsTransitioning: (v: boolean) => void;
-  setMaterialRef: (ref: any) => void;
+  setMaterialTransitionRef: (ref: any) => void;
+  setFrameColorObject: (color: THREE.Color) => void;
 }
 
 export const useAppStore = create<AppStore>((set) => ({
@@ -29,7 +35,16 @@ export const useAppStore = create<AppStore>((set) => ({
   currentPhoneColor: "#8977c1",
   nextPhoneColor: "#8977c1",
   isTransitioning: false,
-  materialRef: null,
+  materialTransitionRef: null,
+  frameColorObject: null,
+  bgColorObjects: [
+    "#4b38ab",
+    "#5e77c1",
+    "#8077e5",
+    "#b9beff",
+    "#dc93ff",
+    "#e1beff",
+  ].map((h) => new THREE.Color(h)),
   setPhoneSize: (phoneSize) => set({ phoneSize }),
   setLoadingProgress: (loadingProgress) => set({ loadingProgress }),
   setLoaded: (loaded) => set({ loaded }),
@@ -37,5 +52,7 @@ export const useAppStore = create<AppStore>((set) => ({
   setCurrentPhoneColor: (currentPhoneColor) => set({ currentPhoneColor }),
   setNextPhoneColor: (nextPhoneColor) => set({ nextPhoneColor }),
   setIsTransitioning: (isTransitioning) => set({ isTransitioning }),
-  setMaterialRef: (materialRef) => set({ materialRef }),
+  setMaterialTransitionRef: (materialTransitionRef) =>
+    set({ materialTransitionRef }),
+  setFrameColorObject: (frameColorObject) => set({ frameColorObject }),
 }));

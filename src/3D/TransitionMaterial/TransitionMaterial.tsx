@@ -8,7 +8,9 @@ import { forwardRef } from "react";
 import { useAppStore } from "../../store";
 
 const TransitionMaterial = forwardRef((props: any) => {
-  const setMaterialRef = useAppStore((store) => store.setMaterialRef);
+  const setMaterialTransitionRef = useAppStore(
+    (store) => store.setMaterialTransitionRef,
+  );
 
   const uniforms = {
     uProgress: { value: 0 },
@@ -44,7 +46,7 @@ const TransitionMaterial = forwardRef((props: any) => {
       vertexShader={vertexShader}
       fragmentShader={fragmentShader}
       uniforms={uniforms}
-      ref={setMaterialRef}
+      ref={setMaterialTransitionRef}
       {...props}
     />
   );
