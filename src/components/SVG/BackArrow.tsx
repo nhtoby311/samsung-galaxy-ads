@@ -1,4 +1,4 @@
-import type Props from './type';
+import { type Props } from './type';
 
 const BackArrow = ({ className }: Props) => (
 	<svg

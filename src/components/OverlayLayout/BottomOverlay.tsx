@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ColorPicker } from '../ColorPicker';
 import DynamicIsland from '../DynamicIsland';
 
 export default function BottomOverlay() {

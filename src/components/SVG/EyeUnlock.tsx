@@ -1,4 +1,4 @@
-import type Props from './type';
+import { type Props } from './type';
 const EyeUnlock = ({ className }: Props) => (
 	<svg
 		xmlns='http://www.w3.org/2000/svg'

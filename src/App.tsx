@@ -5,7 +5,6 @@ import { CameraControls } from '@react-three/drei';
 import { LoadingScreen } from './LoadingScreen';
 import { useAppStore } from './store';
 import { Leva } from 'leva';
-import { ColorPicker } from './components/ColorPicker';
 import BottomOverlay from './components/OverlayLayout/BottomOverlay';
 //import { ColorPicker } from "./components/ColorPicker";
 
