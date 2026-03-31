@@ -24,12 +24,21 @@ export function usePrivacyDisplay(
 	const baseIntensity = useRef(0);
 	const sharpness = useRef(6);
 	const sceneVisible = useAppStore((s) => s.sceneVisible);
+	const isPrivacyDisplay = useAppStore((s) => s.isPrivacyDisplay);
 
 	//For the initial animation spin, then the screen can turn on after.
 	useEffect(() => {
 		if (!sceneVisible) return;
 		animate(baseIntensity, { current: 0.6 }, { delay: 1, duration: 1 });
 	}, [sceneVisible]);
+
+	useEffect(() => {
+		animate(
+			sharpness,
+			{ current: isPrivacyDisplay ? 6 : 0 },
+			{ duration: 0.5 },
+		);
+	}, [isPrivacyDisplay]);
 
 	useControls('Transition', {
 		Phone: folder({

@@ -39,6 +39,20 @@ body,
 	pointer-events: none;
 }
 
+.empty-overlay {
+	position: relative;
+	display: flex;
+	width: 100%;
+}
+
+.bottom {
+	position: absolute;
+	bottom: 0;
+	display: flex;
+	width: 100%;
+	pointer-events: none;
+}
+
 /* Loading Screen */
 .loading-screen {
 	position: fixed;
