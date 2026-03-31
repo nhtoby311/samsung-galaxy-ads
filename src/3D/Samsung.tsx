@@ -107,9 +107,21 @@ export function Samsung({
     dotDensity,
     noiseScale,
     noiseSpeed,
+    noisePositionX,
+    noisePositionY,
+    noisePositionZ,
     edgeThickness,
     maskMinY,
     maskMaxY,
+    edgeColor1,
+    edgeColorStop1,
+    edgeColor2,
+    edgeColorStop2,
+    edgeColor3,
+    edgeColorStop3,
+    edgeColor4,
+    edgeColorStop4,
+    edgeColorWidth,
   } = useControls("Transition", {
     transitionProgress: {
       value: 0,
@@ -123,7 +135,7 @@ export function Samsung({
       max: 800,
     },
     noiseScale: {
-      value: 1.13,
+      value: 1.28,
       min: 0,
       max: 10,
       step: 0.01,
@@ -134,8 +146,23 @@ export function Samsung({
       max: 5,
       step: 0.01,
     },
+    noisePositionX: {
+      value: -0.4,
+      min: -1,
+      max: 1,
+    },
+    noisePositionY: {
+      value: 0.08,
+      min: -1,
+      max: 1,
+    },
+    noisePositionZ: {
+      value: -0.04,
+      min: -1,
+      max: 1,
+    },
     edgeThickness: {
-      value: 0.04,
+      value: 0.05,
       min: 0.001,
       max: 0.3,
       step: 0.001,
@@ -152,6 +179,20 @@ export function Samsung({
       max: 2,
       step: 0.01,
     },
+    edgeColor1: { value: "#ffffff" },
+    edgeColorStop1: { value: 0.0, min: 0, max: 1, step: 0.01 },
+    edgeColor2: { value: "#4a90d9" },
+    edgeColorStop2: { value: 0.33, min: 0, max: 1, step: 0.01 },
+    edgeColor3: { value: "#00c8ff" },
+    edgeColorStop3: { value: 0.66, min: 0, max: 1, step: 0.01 },
+    edgeColor4: { value: "#000000" },
+    edgeColorStop4: { value: 1.0, min: 0, max: 1, step: 0.01 },
+    edgeColorWidth: {
+      value: 0.05,
+      min: 0,
+      max: 1,
+      step: 0.01,
+    },
   });
 
   useEffect(() => {
@@ -160,17 +201,43 @@ export function Samsung({
     materialRef.uniforms.uDotDensity.value = dotDensity;
     materialRef.uniforms.uNoiseScale.value = noiseScale;
     materialRef.uniforms.uNoiseSpeed.value = noiseSpeed;
+    materialRef.uniforms.uNoisePosition.value.set(
+      noisePositionX,
+      noisePositionY,
+      noisePositionZ,
+    );
     materialRef.uniforms.uEdgeThickness.value = edgeThickness;
     materialRef.uniforms.uMinMaxGradientMaskY.value.set(maskMinY, maskMaxY);
+    materialRef.uniforms.uEdgeColor1.value.set(edgeColor1);
+    materialRef.uniforms.uEdgeColor2.value.set(edgeColor2);
+    materialRef.uniforms.uEdgeColor3.value.set(edgeColor3);
+    materialRef.uniforms.uEdgeColor4.value.set(edgeColor4);
+    materialRef.uniforms.uEdgeColorStop1.value = edgeColorStop1;
+    materialRef.uniforms.uEdgeColorStop2.value = edgeColorStop2;
+    materialRef.uniforms.uEdgeColorStop3.value = edgeColorStop3;
+    materialRef.uniforms.uEdgeColorStop4.value = edgeColorStop4;
+    materialRef.uniforms.uEdgeColorWidth.value = edgeColorWidth;
   }, [
     materialRef,
     transitionProgress,
     dotDensity,
     noiseScale,
     noiseSpeed,
+    noisePositionX,
+    noisePositionY,
+    noisePositionZ,
     edgeThickness,
     maskMinY,
     maskMaxY,
+    edgeColor1,
+    edgeColorStop1,
+    edgeColor2,
+    edgeColorStop2,
+    edgeColor3,
+    edgeColorStop3,
+    edgeColor4,
+    edgeColorStop4,
+    edgeColorWidth,
   ]);
 
   // Unpause when the loading screen has fully exited.

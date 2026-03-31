@@ -4,7 +4,7 @@ import Scene from "./3D/Scene";
 import { CameraControls } from "@react-three/drei";
 import { LoadingScreen } from "./LoadingScreen";
 import { useAppStore } from "./store";
-import { ColorPicker } from "./components/ColorPicker";
+//import { ColorPicker } from "./components/ColorPicker";
 
 function App() {
   const controlsRef = useRef<CameraControls>(null);
@@ -37,7 +37,7 @@ function App() {
 				</mesh> */}
       </Canvas>
       <LoadingScreen />
-      <ColorPicker />
+      {/* <ColorPicker /> */}
     </div>
   );
 }
