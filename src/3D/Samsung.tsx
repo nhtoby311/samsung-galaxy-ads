@@ -122,6 +122,10 @@ export function Samsung({
     edgeColor4,
     edgeColorStop4,
     edgeColorWidth,
+    overlayDotColor,
+    overlayDotSize,
+    overlayDotDensity,
+    overlayMaskWidth,
   } = useControls("Transition", {
     transitionProgress: {
       value: 0,
@@ -193,6 +197,25 @@ export function Samsung({
       max: 1,
       step: 0.01,
     },
+    overlayDotColor: { value: "#ffffff" },
+    overlayDotSize: {
+      value: 0.3,
+      min: 0,
+      max: 1,
+      step: 0.01,
+    },
+    overlayDotDensity: {
+      value: 80,
+      min: 1,
+      max: 800,
+      step: 1,
+    },
+    overlayMaskWidth: {
+      value: 0.5,
+      min: 0,
+      max: 1,
+      step: 0.01,
+    },
   });
 
   useEffect(() => {
@@ -217,6 +240,10 @@ export function Samsung({
     materialRef.uniforms.uEdgeColorStop3.value = edgeColorStop3;
     materialRef.uniforms.uEdgeColorStop4.value = edgeColorStop4;
     materialRef.uniforms.uEdgeColorWidth.value = edgeColorWidth;
+    materialRef.uniforms.uOverlayDotColor.value.set(overlayDotColor);
+    materialRef.uniforms.uOverlayDotSize.value = overlayDotSize;
+    materialRef.uniforms.uOverlayDotDensity.value = overlayDotDensity;
+    materialRef.uniforms.uOverlayMaskWidth.value = overlayMaskWidth;
   }, [
     materialRef,
     transitionProgress,
@@ -238,6 +265,10 @@ export function Samsung({
     edgeColor4,
     edgeColorStop4,
     edgeColorWidth,
+    overlayDotColor,
+    overlayDotSize,
+    overlayDotDensity,
+    overlayMaskWidth,
   ]);
 
   // Unpause when the loading screen has fully exited.

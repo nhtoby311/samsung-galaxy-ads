@@ -22,6 +22,12 @@ uniform float uEdgeColorStop3;     // Stop position for color 3
 uniform float uEdgeColorStop4;     // Stop position for color 4
 uniform float uEdgeColorWidth;     // How far the edge color extends from the anchor
 
+// --- OVERLAY DOT GRID UNIFORMS ---
+uniform vec3 uOverlayDotColor;     // Color of the overlay dots
+uniform float uOverlayDotSize;     // Size of each dot (0 = invisible, 1 = fills cell)
+uniform float uOverlayDotDensity;  // How dense/many dots (grid frequency)
+uniform float uOverlayMaskWidth;   // How much of the edge color area the dots cover (0-1)
+
 varying vec3 vPosition;
 
 vec4 permute(vec4 x) {
@@ -148,6 +154,25 @@ void main() {
     
     // Apply the gradient edge glow over uColor2
     vec3 baseWithGlow = mix(uColor2, sampledEdgeColor, opticalFalloff);
+
+    // --- OVERLAY DOT GRID (on top of edge color) ---
+    
+    // Build an overlay dot pattern using a separate density
+    vec2 overlayUv = vPosition.xy * uOverlayDotDensity;
+    vec2 overlayGrid = fract(overlayUv);
+    float overlayDot = 1.0 - step(uOverlayDotSize, length(overlayGrid - 0.5));
+
+    // Noisy gradient mask within the edge color region
+    // Use the noise to create a wiggly boundary for visibility
+    float overlayNoise = snoise(vPosition * 4.0 + vec3(0.0, 0.0, uTime * 0.1)) * 0.5 + 0.5;
+    float overlayMaskT = clamp(distFromAnchor / max(uEdgeColorWidth * uOverlayMaskWidth, 0.0001), 0.0, 1.0);
+    float overlayNoisyMask = smoothstep(overlayMaskT, overlayMaskT + 0.05, overlayNoise);
+
+    // Combine: dot visible only within edge region AND within noisy mask
+    float overlayVisible = overlayDot * inEdgeRegion * overlayNoisyMask;
+
+    // Blend overlay dot color on top of the edge-colored base
+    baseWithGlow = mix(baseWithGlow, uOverlayDotColor, overlayVisible);
     
     // Mix between uColor1 and the glowing base using the dot pattern transition
     vec3 finalColor = mix(uColor1, baseWithGlow, dotPattern);

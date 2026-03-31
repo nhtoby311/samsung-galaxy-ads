@@ -30,6 +30,10 @@ const TransitionMaterial = forwardRef((props: any) => {
     uEdgeColorStop3: { value: 0.66 },
     uEdgeColorStop4: { value: 1.0 },
     uEdgeColorWidth: { value: 0.1 },
+    uOverlayDotColor: { value: new THREE.Color("#ffffff") },
+    uOverlayDotSize: { value: 0.3 },
+    uOverlayDotDensity: { value: 80.0 },
+    uOverlayMaskWidth: { value: 0.5 },
   };
 
   return (
