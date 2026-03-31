@@ -1,4 +1,4 @@
-precision mediump float;
+precision highp float;
 
 uniform float uProgress;
 uniform vec3 uColor1;
