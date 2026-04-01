@@ -4,10 +4,9 @@ import * as THREE from "three";
 import fragmentShader from "./shaders/fragmentEdgeGlow.glsl?raw";
 import vertexShader from "./shaders/vertex.glsl?raw";
 import CSM from "three-custom-shader-material";
-import { forwardRef } from "react";
 import { useAppStore } from "../../store";
 
-const TransitionMaterial = forwardRef((props: any) => {
+const TransitionMaterial = (props: any) => {
   const setMaterialTransitionRef = useAppStore(
     (store) => store.setMaterialTransitionRef,
   );
@@ -50,6 +49,6 @@ const TransitionMaterial = forwardRef((props: any) => {
       {...props}
     />
   );
-});
+};
 
 export default TransitionMaterial;
