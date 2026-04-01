@@ -44,6 +44,18 @@ export default function Scene({ controlsRef }: SceneProps) {
     });
   }, []);
 
+  //When isVideoPlaying toggles and camera is in the FRONT → animate to BACK
+  useEffect(() => {
+    return useAppStore.subscribe((state, prev) => {
+      if (state.isVideoPlaying === prev.isVideoPlaying) return;
+      if (state.isVideoPlaying) {
+        if (sideRef.current.frontBack === "front") {
+          controlsRef.current?.rotateTo(BACK_AZIMUTH, EQUATOR_POLAR, true);
+        }
+      }
+    });
+  }, []);
+
   return (
     <>
       {/* <Perf /> */}
