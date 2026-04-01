@@ -39,7 +39,7 @@ function App() {
 					<meshBasicMaterial color='red' />
 				</mesh> */}
 				</Canvas>
-				<Leva collapsed />
+				<Leva collapsed hidden />
 				<LoadingScreen />
 			</div>
 
