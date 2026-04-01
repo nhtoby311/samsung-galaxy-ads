@@ -1,7 +1,35 @@
+@font-face {
+	font-family: 'Samsung Sans Regular';
+	font-style: normal;
+	font-weight: normal;
+	src:
+		local('Samsung Sans Regular'),
+		url('/font/SamsungSans-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Samsung Sans Medium';
+	font-style: normal;
+	font-weight: normal;
+	src:
+		local('Samsung Sans Medium'),
+		url('/font/SamsungSans-Medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Samsung Sans Bold';
+	font-style: normal;
+	font-weight: normal;
+	src:
+		local('Samsung Sans Bold'),
+		url('/font/SamsungSans-Bold.woff') format('woff');
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Samsung Sans Regular', sans-serif;
 }
 
 html,

@@ -20,4 +20,8 @@ const Container = styled.div`
 	color: rgba(255, 255, 255, 0.7);
 	font-size: 16px;
 	font-weight: 500;
+
+	@media (max-width: 700px) {
+		padding: 24px 12px;
+	}
 `;
