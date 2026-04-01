@@ -32,7 +32,11 @@ function App() {
 					shadows>
 					<Scene controlsRef={controlsRef} />
 
-					<CameraControls ref={controlsRef} />
+					<CameraControls
+						ref={controlsRef}
+						maxDistance={3}
+						minDistance={0.5}
+					/>
 
 					{/* <mesh position={[0, 0, 1.17]}>
 					<boxGeometry args={[0.1, 0.1, 0.1]} />
@@ -40,7 +44,6 @@ function App() {
 				</mesh> */}
 				</Canvas>
 				<Leva collapsed hidden />
-				<LoadingScreen />
 			</div>
 
 			<div className='fixed-overlay'>
@@ -55,6 +58,8 @@ function App() {
 					</div>
 				</div>
 			</div>
+
+			<LoadingScreen />
 		</>
 	);
 }

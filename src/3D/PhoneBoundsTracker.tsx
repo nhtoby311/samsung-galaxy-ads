@@ -19,14 +19,17 @@ export function PhoneBoundsTracker({
 	const { camera, size } = useThree();
 	const setPhoneSize = useAppStore((s) => s.setPhoneSize);
 	const measured = useRef(false);
-	const loaded = useAppStore((s) => s.loaded);
 
 	useFrame(() => {
-		if (!loaded || measured.current || !groupRef.current) return;
+		if (measured.current || !groupRef.current) return;
 
 		const box = new THREE.Box3().setFromObject(groupRef.current);
-		const center = box.getCenter(new THREE.Vector3());
 		const boxSize = box.getSize(new THREE.Vector3());
+
+		// Skip if the model hasn't loaded geometry yet
+		if (boxSize.x === 0 || boxSize.y === 0) return;
+
+		const center = box.getCenter(new THREE.Vector3());
 
 		// Shift the phone so its visual center sits at the world origin
 		groupRef.current.position.x -= center.x;
