@@ -13,7 +13,7 @@ const TransitionMaterial = (props: any) => {
 
 	const uniforms = {
 		uProgress: { value: 0 },
-		uColor1: { value: new THREE.Color('#6e5da4 ') },
+		uColor1: { value: new THREE.Color('#6e5da4') },
 		uColor2: { value: new THREE.Color('#000000') },
 		uTime: { value: 0 },
 		uNoiseScale: { value: 3.0 },
