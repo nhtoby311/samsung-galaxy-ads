@@ -148,7 +148,7 @@ void main() {
     opticalFalloff *= inEdgeRegion;
 
     // Sample the 4-stop gradient relative to the edge color width
-    vec3 sampledEdgeColor = edgeGradient(edgeColorT) * vec3(5.);
+    vec3 sampledEdgeColor = edgeGradient(edgeColorT) * vec3(15.);
 
     // --- FINAL COLOR MIXING ---
     
