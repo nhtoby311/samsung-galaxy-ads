@@ -31,6 +31,8 @@ export function ColorPicker() {
 		if (!isTransitioning) setPendingColor(null);
 	}, [isTransitioning]);
 
+	const showToast = useAppStore((s) => s.showToast);
+
 	return (
 		<Container>
 			{COLORS.map((c) => {
@@ -48,7 +50,10 @@ export function ColorPicker() {
 						style={{ opacity, transition: 'opacity 0.3s' }}>
 						<Button
 							title={c.label}
-							onClick={() => handleClick(c.value)}
+							onClick={() => {
+								handleClick(c.value);
+								showToast('Switched to ' + c.label, 1000);
+							}}
 							disabled={isActive || isTransitioning}
 							$color={c.value}
 						/>

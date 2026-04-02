@@ -19,6 +19,9 @@ interface AppStore {
 	frameColorObject: THREE.Color | null;
 	/** Stable THREE.Color objects for background — mutated in-place by the transition hook. */
 	bgColorObjects: THREE.Color[];
+	toastMessage: string | null;
+	showToast: (message: string, duration?: number) => void;
+	hideToast: () => void;
 	setPhoneSize: (size: PhoneSize) => void;
 	setLoadingProgress: (progress: number) => void;
 	setLoaded: (loaded: boolean) => void;
@@ -31,6 +34,8 @@ interface AppStore {
 	setMaterialTransitionRef: (ref: any) => void;
 	setFrameColorObject: (color: THREE.Color) => void;
 }
+
+let toastTimer: ReturnType<typeof setTimeout> | null = null;
 
 export const useAppStore = create<AppStore>((set) => ({
 	phoneSize: null,
@@ -47,6 +52,20 @@ export const useAppStore = create<AppStore>((set) => ({
 	bgColorObjects: ['#4b38ab', '#5e77c1', '#8077e5', '#b9beff'].map(
 		(h) => new THREE.Color(h),
 	),
+	toastMessage: null,
+	showToast: (message, duration = 2000) => {
+		if (toastTimer) clearTimeout(toastTimer);
+		set({ toastMessage: message });
+		toastTimer = setTimeout(() => {
+			set({ toastMessage: null });
+			toastTimer = null;
+		}, duration);
+	},
+	hideToast: () => {
+		if (toastTimer) clearTimeout(toastTimer);
+		toastTimer = null;
+		set({ toastMessage: null });
+	},
 	setPhoneSize: (phoneSize) => set({ phoneSize }),
 	setLoadingProgress: (loadingProgress) => set({ loadingProgress }),
 	setLoaded: (loaded) => set({ loaded }),

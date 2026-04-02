@@ -31,6 +31,8 @@ export default function DynamicIsland() {
 	const isVideoPlaying = useAppStore((s) => s.isVideoPlaying);
 	const setIsVideoPlaying = useAppStore((s) => s.setIsVideoPlaying);
 
+	const showToast = useAppStore((s) => s.showToast);
+
 	return (
 		<Container
 			layout
@@ -54,14 +56,33 @@ export default function DynamicIsland() {
 						<MotionSVGContainer
 							layout
 							variants={itemVariants}
-							onClick={togglePrivacyDisplay}>
+							onClick={() => {
+								togglePrivacyDisplay();
+								if (isPrivacyDisplay) {
+									showToast(
+										'Privacy Display turned OFF',
+										2000,
+									);
+								} else {
+									showToast(
+										'Privacy Display turned ON',
+										2000,
+									);
+								}
+							}}>
 							{isPrivacyDisplay ? <EyeLock /> : <EyeUnlock />}
 						</MotionSVGContainer>
 
 						<StyledMagicMotionSVGContainer
 							layout
 							variants={itemVariants}
-							onClick={() => setIsVideoPlaying(true)}
+							onClick={() => {
+								setIsVideoPlaying(true);
+								showToast(
+									'Removing object with Galaxy AI ',
+									2500,
+								);
+							}}
 							disabled={isVideoPlaying}
 							$isPlaying={isVideoPlaying}>
 							<Magic />

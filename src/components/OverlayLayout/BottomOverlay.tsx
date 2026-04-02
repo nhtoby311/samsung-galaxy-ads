@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import DynamicIsland from '../DynamicIsland';
+import Toast from '../Toast';
+import { useMediaQuery } from '@uidotdev/usehooks';
 
 export default function BottomOverlay() {
+	const isMobile = useMediaQuery('(max-width: 700px)');
+
 	return (
 		<Container>
-			{/* <ColorPicker /> */}
+			<Toast bottom={isMobile ? 90 : 120} />
 			<DynamicIsland />
 		</Container>
 	);
