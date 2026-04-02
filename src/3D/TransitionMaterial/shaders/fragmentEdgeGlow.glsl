@@ -148,7 +148,7 @@ void main() {
     opticalFalloff *= inEdgeRegion;
 
     // Sample the 4-stop gradient relative to the edge color width
-    vec3 sampledEdgeColor = edgeGradient(edgeColorT);
+    vec3 sampledEdgeColor = edgeGradient(edgeColorT) * vec3(5.);
 
     // --- FINAL COLOR MIXING ---
     
@@ -172,7 +172,7 @@ void main() {
     float overlayVisible = overlayDot * inEdgeRegion * overlayNoisyMask;
 
     // Blend overlay dot color on top of the edge-colored base
-    baseWithGlow = mix(baseWithGlow, uOverlayDotColor, overlayVisible);
+    baseWithGlow = mix(baseWithGlow, uOverlayDotColor * vec3(5.0), overlayVisible);
     
     // Mix between uColor1 and the glowing base using the dot pattern transition
     vec3 finalColor = mix(uColor1, baseWithGlow, dotPattern);

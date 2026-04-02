@@ -1,67 +1,64 @@
-import { useEffect, useRef } from 'react';
-import { Canvas } from '@react-three/fiber';
-import Scene from './3D/Scene';
-import { CameraControls } from '@react-three/drei';
-import { LoadingScreen } from './LoadingScreen';
-import { useAppStore } from './store';
-import { Leva } from 'leva';
-import BottomOverlay from './components/OverlayLayout/BottomOverlay';
-import TopOverlay from './components/OverlayLayout/TopOverlay';
+import { useEffect, useRef } from "react";
+import { Canvas } from "@react-three/fiber";
+import Scene from "./3D/Scene";
+import { CameraControls } from "@react-three/drei";
+import { LoadingScreen } from "./LoadingScreen";
+import { useAppStore } from "./store";
+import { Leva } from "leva";
+import BottomOverlay from "./components/OverlayLayout/BottomOverlay";
+import TopOverlay from "./components/OverlayLayout/TopOverlay";
 //import { ColorPicker } from "./components/ColorPicker";
 
 function App() {
-	const controlsRef = useRef<CameraControls>(null);
-	const sceneVisible = useAppStore((s) => s.sceneVisible);
+  const controlsRef = useRef<CameraControls>(null);
+  const sceneVisible = useAppStore((s) => s.sceneVisible);
 
-	// HACK: Bc after .glb animated, object shift away from 0,0,0. So shift target to orbit obj
-	useEffect(() => {
-		if (!sceneVisible) return;
-		controlsRef.current?.setTarget(0, 0, 1.17, true);
-	}, [sceneVisible]);
+  // HACK: Bc after .glb animated, object shift away from 0,0,0. So shift target to orbit obj
+  useEffect(() => {
+    if (!sceneVisible) return;
+    controlsRef.current?.setTarget(0, 0, 1.17, true);
+  }, [sceneVisible]);
 
-	return (
-		<>
-			<div className='background-canvas'>
-				<Canvas
-					camera={{
-						fov: 25,
-						near: 0.1,
-						far: 100,
-						position: [0, 0, 3.2],
-					}}
-					shadows>
-					<Scene controlsRef={controlsRef} />
+  return (
+    <>
+      <div className="background-canvas">
+        <Canvas
+          camera={{
+            fov: 25,
+            near: 0.1,
+            far: 100,
+            position: [0, 0, 3.2],
+          }}
+          shadows
+        >
+          <Scene controlsRef={controlsRef} />
 
-					<CameraControls
-						ref={controlsRef}
-						maxDistance={3}
-						minDistance={0.5}
-					/>
+          <CameraControls ref={controlsRef} maxDistance={3} minDistance={0.5} />
 
-					{/* <mesh position={[0, 0, 1.17]}>
+          {/* <mesh position={[0, 0, 1.17]}>
 					<boxGeometry args={[0.1, 0.1, 0.1]} />
 					<meshBasicMaterial color='red' />
 				</mesh> */}
-				</Canvas>
-				<Leva collapsed hidden />
-			</div>
+        </Canvas>
+        <Leva collapsed />
+      </div>
 
-			<div className='fixed-overlay'>
-				<div className='empty-overlay'>
-					<TopOverlay />
-				</div>
-				<div className='empty-overlay'></div>
+      <div className="fixed-overlay">
+        <div className="empty-overlay">
+          <TopOverlay />
+        </div>
+        <div className="empty-overlay"></div>
 
-				<div className='empty-overlay'>
-					<div className='bottom'>
-						<BottomOverlay />
-					</div>
-				</div>
-			</div>
+        <div className="empty-overlay">
+          <div className="bottom">
+            <BottomOverlay />
+          </div>
+        </div>
+      </div>
 
-			<LoadingScreen />
-		</>
-	);
+      <LoadingScreen />
+    </>
+  );
 }
 
 export default App;
