@@ -26,6 +26,7 @@ function App() {
 		<>
 			<div className='background-canvas'>
 				<Canvas
+					dpr={[1, 1.5]}
 					camera={{
 						fov: 25,
 						near: 0.1,
