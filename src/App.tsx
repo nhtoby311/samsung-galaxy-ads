@@ -12,6 +12,7 @@ import TopOverlay from './components/OverlayLayout/TopOverlay';
 function App() {
 	const controlsRef = useRef<CameraControls>(null);
 	const sceneVisible = useAppStore((s) => s.sceneVisible);
+	const levaHidden = !new URLSearchParams(window.location.search).has('debug');
 
 	// HACK: Bc after .glb animated, object shift away from 0,0,0. So shift target to orbit obj
 	useEffect(() => {
@@ -43,7 +44,7 @@ function App() {
 					<meshBasicMaterial color='red' />
 				</mesh> */}
 				</Canvas>
-				<Leva collapsed hidden />
+				<Leva collapsed hidden={levaHidden} />
 			</div>
 
 			<div className='fixed-overlay'>
