@@ -62,6 +62,18 @@ export function LoadingScreen() {
 						{Math.round(loadingProgress)}%
 					</ProgressText>
 
+					<Disclaimer>
+						<p>
+							Disclaimer: Not affiliated with Samsung. Made by{' '}
+							<a
+								href='https://nhtoby.com'
+								target='_blank'
+								rel='noopener noreferrer'>
+								nhtoby.com
+							</a>
+						</p>
+					</Disclaimer>
+
 					<SvgStack
 						initial={false}
 						animate={{
@@ -220,4 +232,22 @@ const GlowSvg = styled(LayerSvg)`
 	filter: blur(6px);
 `;
 
-// ─── Component ───────────────────────────────────────────────────────────────
+const Disclaimer = styled.div`
+	position: absolute;
+	bottom: 10px;
+	display: flex;
+	width: 300px;
+	width: 90%;
+	justify-content: center;
+	p {
+		font-size: 13px;
+		color: rgba(255, 255, 255, 0.45);
+		text-align: center;
+	}
+
+	a {
+		color: rgba(255, 255, 255, 0.45);
+		text-decoration: underline;
+		pointer-events: all;
+	}
+`;
